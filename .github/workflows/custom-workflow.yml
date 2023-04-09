@@ -12,6 +12,19 @@ jobs:
     name: Build
     runs-on: ubuntu-latest
     steps:
+      - name: Identify Repo type
+        run: |
+          if [ "${{ github.event.repository.language }}" == "Python" ]; then
+             echo "Python project detected"
+             project_type="python"
+          elif [ "${{ github.event.repository.language }}" == "JavaScript" ]; then
+             echo "JavaScript project detected"
+             project_type="javascript"
+          else
+             echo "Unable to determine project type"
+             exit 1
+          fi
+          
       - uses: anas203044/global/globalaction@main
         with:
           sonar-token: ${{ env.SONAR_TOKEN }}
