@@ -25,7 +25,7 @@ jobs:
              exit 1
           fi
           
-      - uses: anas203044/private-test/action_edit@main
+      - uses: anas203044/global/globalaction@main
         with:
           sonar-token: ${{ env.SONAR_TOKEN }}
           sonar-host-url: ${{ env.SONAR_HOST_URL }}
